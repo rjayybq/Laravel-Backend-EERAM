@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\API\Auth\ApiGuardianRegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\Auth\ApiLoginController;
+use App\Http\Controllers\API\Auth\ApiStudentRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login', [ApiLoginController::class, 'login']);
+Route::middleware('auth:sanctum')->post('logout', [ApiLoginController::class, 'logout']);
+Route::post('register/student', [ApiStudentRegisterController::class, 'register']);
+Route::post('register/guardian', [ApiGuardianRegisterController::class, 'register']);

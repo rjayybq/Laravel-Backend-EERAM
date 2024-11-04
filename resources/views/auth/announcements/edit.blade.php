@@ -1,5 +1,5 @@
-<!-- resources/views/admin/announcements/edit.blade.php -->
-@extends('layouts.app')
+
+@extends('layouts.main')
 
 @section('content')
 <div class="container">

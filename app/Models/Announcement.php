@@ -12,6 +12,7 @@ class Announcement extends Model
         'title',
         'content',
         'target_audience',
-        'attachment'
+        'attachment',
+        'created_at'
     ];
 }

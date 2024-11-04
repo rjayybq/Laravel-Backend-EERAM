@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Auth\ApiAnnouncementController;
 use App\Http\Controllers\API\Auth\ApiGuardianRegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,3 +26,8 @@ Route::post('login', [ApiLoginController::class, 'login']);
 Route::middleware('auth:sanctum')->post('logout', [ApiLoginController::class, 'logout']);
 Route::post('register/student', [ApiStudentRegisterController::class, 'register']);
 Route::post('register/guardian', [ApiGuardianRegisterController::class, 'register']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/announcements', [ApiAnnouncementController::class, 'index']);
+    Route::get('/recent-announcement', [ApiAnnouncementController::class, 'getRecentAnnouncement']);
+});

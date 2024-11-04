@@ -42,7 +42,7 @@ class AnnouncementController extends Controller
     }
     public function create()
     {
-        return view('auth.create-announcement');
+        return view('auth.announcements.create-announcement');
     }
     public function edit($id)
     {

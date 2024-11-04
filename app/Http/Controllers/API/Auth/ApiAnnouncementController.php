@@ -19,4 +19,15 @@ class ApiAnnouncementController extends Controller
         ]);
     }
 
+    public function getRecentAnnouncement(Request $request)
+    {
+        
+        $announcement = Announcement::orderBy('created_at', 'desc')->first();
+
+        if ($announcement) {
+            return response()->json($announcement, 200);
+        } else {
+            return response()->json(['message' => 'No announcements found.'], 404);
+        }
+    }
 }

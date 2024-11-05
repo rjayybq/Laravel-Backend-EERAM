@@ -1,5 +1,5 @@
 
-@extends('layouts.main')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -19,14 +19,6 @@
             <textarea name="content" id="content" rows="5" class="form-control" required>{{ $announcement->content }}</textarea>
         </div>
 
-        <div class="form-group">
-            <label for="target_audience" class="form-label">Target Audience</label>
-            <select name="target_audience" id="target_audience" class="form-control" required>
-                <option value="students" {{ $announcement->target_audience == 'students' ? 'selected' : '' }}>Students</option>
-                <option value="guardians" {{ $announcement->target_audience == 'guardians' ? 'selected' : '' }}>Guardians</option>
-                <option value="both" {{ $announcement->target_audience == 'both' ? 'selected' : '' }}>Both</option>
-            </select>
-        </div>
 
         <div class="form-group">
             <label for="attachment" class="form-label">Attachment (optional)</label>

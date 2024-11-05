@@ -19,7 +19,6 @@ class AnnouncementController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'target_audience' => 'required|string|in:students,guardians,both',
             'attachment' => 'nullable|file|max:5000', // adjust max size as needed
         ]);
 
@@ -33,7 +32,6 @@ class AnnouncementController extends Controller
         Announcement::create([
             'title' => $request->title,
             'content' => $request->content,
-            'target_audience' => $request->target_audience,
             'attachment' => $attachmentPath,
         ]);
 
@@ -56,7 +54,6 @@ class AnnouncementController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'target_audience' => 'required|string|in:students,guardians,both',
             'attachment' => 'nullable|file|max:5000',
         ]);
 
@@ -71,7 +68,6 @@ class AnnouncementController extends Controller
         // Update other fields
         $announcement->title = $request->title;
         $announcement->content = $request->content;
-        $announcement->target_audience = $request->target_audience;
         $announcement->save();
 
         return redirect()->route('auth.announcements.index')->with('success', 'Announcement updated successfully');

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('course');
             $table->string('year');
             $table->boolean('is_verified')->default(false);
-            $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();
         });

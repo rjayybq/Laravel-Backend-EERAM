@@ -6,7 +6,7 @@
     <h2 class="my-4">All Announcements</h2>
 
     <!-- Button to Create a New Announcement -->
-    <a href="{{ route('auth.announcements.create') }}" class="btn btn-primary mb-4">Create New Announcement</a>
+   
 
     <!-- Announcements Table -->
     <div class="table-responsive">
@@ -15,7 +15,6 @@
                 <tr>
                     <th>Title</th>
                     <th>Content Preview</th>
-                    <th>Target Audience</th>
                     <th>Posted Date</th>
                     <th>Actions</th>
                 </tr>
@@ -25,7 +24,6 @@
                     <tr>
                         <td>{{ $announcement->title }}</td>
                         <td>{{ Str::limit($announcement->content, 50) }}</td>
-                        <td>{{ ucfirst($announcement->target_audience) }}</td>
                         <td>{{ $announcement->created_at->format('M d, Y') }}</td>
                         <td>
                             

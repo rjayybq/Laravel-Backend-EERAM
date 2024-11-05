@@ -11,13 +11,13 @@ class AdminController extends Controller
 {
     public function showUnverifiedUsers()
     {
-        $unverifiedStudents = Student::where('is_verified', false)->get();
-        $unverifiedGuardians = Guardian::where('is_verified', false)->get();
+        $unverifiedStudents = Student::where('is_verified', false)->paginate(5);
+        $unverifiedGuardians = Guardian::where('is_verified', false)->paginate(5);
 
         return view('auth.unverified-users', compact('unverifiedStudents', 'unverifiedGuardians'));
     }
 
-    // Verify a user by role and ID
+    
     public function verifyUser($role, $id)
     {
         if ($role === 'student') {
@@ -33,4 +33,20 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'User verified successfully.');
     }
+
+    public function getVerifiedAccounts()
+    {
+        // Fetch all verified students and guardians
+        $verifiedStudents = Student::where('is_verified', true)->paginate(5);
+        $verifiedGuardians = Guardian::where('is_verified', true)->paginate(5);
+
+        // Return a view or JSON response
+        return view('auth/verified-users', compact('verifiedStudents', 'verifiedGuardians'));
+    }
+
+    public function create()
+    {
+        return view('auth.create-announcement');
+    }
+
 }

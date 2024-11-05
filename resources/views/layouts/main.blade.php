@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/seodashlogo.png" />
+  <title>EERAM ADMIN PANEL</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/UDD LOGO.png" />
   <link rel="stylesheet" href="../../node_modules/simplebar/dist/simplebar.min.css">
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
 </head>
@@ -19,10 +19,12 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/logo-light.svg" alt="" />
+        <div class="brand-logo d-flex align-items-center justify-content-center ">
+          <a href="./index.html" style="margin-top: -30px; margin-left: 10px ">
+            <img src="../assets/images/logos/EDU-EMER LOGO.ico" alt="" style="margin-left: 10px; margin-bottom: -30px " />
+            <h5 class="text-center">Edu-Emergency Risk Assessment Monitoring System</h5>
           </a>
+         
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
           </div>
@@ -35,7 +37,7 @@
               <span class="hide-menu">Home</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="/" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('auth.home') }}" aria-expanded="false">
                 <span>
                   <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
                 </span>
@@ -49,31 +51,39 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('auth.announcements.index') }}" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
+                  <iconify-icon icon="material-symbols:post" class="fs-6"></iconify-icon>
                 </span>
-                <span class="hide-menu">All Announcements</span>
+                <span class="hide-menu">Show Announcements</span>
               </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('auth.announcements.create') }}" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:danger-circle-bold-duotone" class="fs-6"></iconify-icon>
+                  <iconify-icon icon="material-symbols:create-new-folder-outline" class="fs-6"></iconify-icon>
                 </span>
                 <span class="hide-menu">Create Announcements</span>
               </a>
             </li>
             <li class="nav-small-cap">
                 <i class="ti ti-dots nav-small-cap-icon fs-6"></i>
-                <span class="hide-menu">PENDING ACCOUNTS</span>
+                <span class="hide-menu">ACCOUNT VERIFIED MANAGEMENT</span>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('auth.unverified-users') }}" aria-expanded="false">
                   <span>
-                    <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
+                    <iconify-icon icon="line-md:account-alert-loop" class="fs-6"></iconify-icon>
                   </span>
                   <span class="hide-menu">Unverified Accounts</span>
                 </a>
-              </li>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{ route('auth.verified') }}" aria-expanded="false">
+                <span>
+                  <iconify-icon icon="material-symbols:person-check-outline" class="fs-6"></iconify-icon>
+                </span>
+                <span class="hide-menu">Verified Accounts</span>
+              </a>
+          </li>
           </ul>
         </nav>
         <!-- End Sidebar navigation -->
@@ -104,25 +114,24 @@
              
               <li class="nav-item dropdown">
                 
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                <a class="nav-link nav-icon-hover ml-5" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  {{ Auth::user()->name }}
+                 
                   <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                 </a>
-                
+                {{ Auth::user()->name }}
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
-                  <div class="message-body">
+                  <div class="message-body">   
+                      
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                      {{ __('Logout') }}
+                    </a>
                     
-                    
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">
-                     {{ __('Logout') }}
-                 </a>
-
-                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                     @csrf
-                 </form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                   </div>
                 </div>
               </li>
